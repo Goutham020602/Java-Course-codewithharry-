@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class Main 
+{
+    public static void main(String args[]) 
+    {
+        int [] marks = new int[3];
+        marks[0]=50;
+        marks[1]=55;
+        marks[2]=60;
+        boolean boo=true;
+        Scanner sc=new Scanner(System.in);
+        while(boo)
+        {
+            System.out.println("Enter the marks with index num");
+            int num=sc.nextInt();
+            try
+            {
+                System.out.println("Welcome to 1st level");
+                try
+                {
+                    System.out.println(marks[num]);
+                    boo=false;
+                }
+                catch(ArrayIndexOutOfBoundsException e)
+                {
+                    System.out.println("Array entered doesn't exist");
+                    System.out.println("Exception in level 2");
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println("Exception in level 1");
+            }
+        }
+        
+        System.out.println("Thank You!");
+    }
+}
