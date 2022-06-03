@@ -1,0 +1,118 @@
+import java.util.Scanner;
+class InvalidInputException extends Exception
+{
+	@Override
+	public String toString()
+	{
+		return "The input entered is not valid";
+	}
+}
+class CannotDivideByZeroException extends Exception
+{
+	@Override
+	public String toString()
+	{
+		return "The input can't be divided by zero";
+	}
+}
+class MaxInputException extends Exception
+{
+	@Override
+	public String toString()
+	{
+		return "The input should be lower than 100000";
+	}
+}
+class MaxMultiplierException extends Exception
+{
+	@Override
+	public String toString()
+	{
+		return "The multiplican should be lower than 7000";
+	}
+}
+
+public class Main
+{
+	public static void main(String[]args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the first number:");
+		double first_num=sc.nextDouble();
+		System.out.println("Which sign you want to use:");
+		String sign=sc.next();
+		System.out.println("Enter the second number:");
+		double second_num=sc.nextDouble();
+			
+		if(first_num>100000||second_num>100000)
+		{
+			try
+			{
+				throw new MaxInputException();
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+		}		
+		else
+		{
+			switch(sign)
+			{
+				case "+":
+		        if(first_num==8 || second_num==9)
+	        	{
+		        	try
+		        	{
+		        		throw new InvalidInputException();
+		        	}
+		        	catch(Exception e)
+		        	{
+			        	System.out.println(e);
+		        	}
+		        }
+		        else
+				{
+				    System.out.println("Answer: " +(first_num+second_num));
+			    }
+				break;
+				case "-":
+				System.out.println("Answer: " +(first_num-second_num));
+				break;
+				case "*":
+				if(first_num>7000||second_num>7000)
+				{
+					try
+					{
+						throw new MaxMultiplierException();
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
+					}
+				}
+				else
+				{
+					System.out.println("Answer: " +first_num*second_num);
+				}
+				break;
+				case "/":
+				if(second_num==0)
+				{
+					try
+					{
+						throw new CannotDivideByZeroException();
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
+					}
+				}
+				else
+				{
+					System.out.println("Answer: " +first_num/second_num);
+				}
+			}
+		}
+    }
+}
